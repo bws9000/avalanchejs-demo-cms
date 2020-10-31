@@ -10,6 +10,8 @@ Vue.use(BootstrapVue)
 Vue.use(IconsPlugin)
 Vue.config.productionTip = false
 
+Vue.prototype.$window = window
+
 new Vue({
   store,
   router,

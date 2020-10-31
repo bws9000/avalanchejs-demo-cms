@@ -1,7 +1,7 @@
 {
   "name": "app",
   "version": "0.1.0",
-  "author" : "Burt Snyder",
+  "author": "Burt Snyder",
   "private": true,
   "scripts": {
     "serve": "vue-cli-service serve",

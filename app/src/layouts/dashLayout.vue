@@ -3,14 +3,16 @@
     <DashHeader/>
   <main class="main">
     <div class="sidebar">
+      <div class="inner_bar">
       <nav>
         <ul>
-          <li><router-link to="/dash">dash</router-link></li>
+          <li><router-link to="/dash/user">users</router-link></li>
         </ul>
       </nav>
       <aside>
         <!-- -->
       </aside>
+      </div>
     </div>
       <slot/>
   </main>
@@ -28,14 +30,18 @@ export default {
     DashHeader,
     DashFooter
   },
-  mounted(){
-  },
+  mounted(){},
   methods: {
 
   }
 };
 </script>
 
-<style>
-/* */
+<style scoped>
+  .inner_bar{
+    border: 1px solid #999;
+  }
+  .inner_bar ul{
+    padding-left:10px;
+  }
 </style>

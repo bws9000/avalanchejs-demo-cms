@@ -10,6 +10,15 @@ const api = EndPoint.create({avalancheNodeUrl:blockchainIp,jsonRPCVersion:"2.0"}
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
+app.post('/api/user/list',
+    (req, res) => {
+    api.keystoreListUsers().then((r)=>{
+        res.json(r.data);
+    }).catch((err)=>{
+        console.log(err);
+    })
+})
+
 app.post('/api/user/create',
     (req, res) => {
     let params = req.body.params;

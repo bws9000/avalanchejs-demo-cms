@@ -3,6 +3,8 @@ import VueRouter from 'vue-router'
 import NotFound from '@/components/pageNotFound'
 import Home  from '@/view/home'
 import Dash from '@/view/dash'
+import UserHome from '@/view/dash/user'
+import UserDetail from '@/view/dash/userDetail'
 import DashHome from '@/view/dash/home'
 import Login from '@/components/magic/login'
 import Logout from '@/components/magic/logout'
@@ -10,7 +12,6 @@ import Logout from '@/components/magic/logout'
 Vue.use(VueRouter);
 import {store} from '@/store'
 import {getMagic, loginStatus} from "@/auth/magic/magic";
-
 
 const noAuth = (to,from,next) => {
     if(!store.state.magicLoggedInStatus){
@@ -46,7 +47,6 @@ const auth = (to,from,next) => {
     }
 }
 
-
 const m = getMagic();
 const setStore = (email,status) => {
     store.state.loginEmail = email;
@@ -55,8 +55,6 @@ const setStore = (email,status) => {
 const magic = (m) => {
     return loginStatus(m)
 }
-
-
 
 const routes = [
     {
@@ -88,7 +86,15 @@ const routes = [
         children: [
             {
                 path: '/',
-                component: DashHome,
+                component: DashHome
+            },
+            {
+                path: 'user',
+                component: UserHome
+            },
+            {
+                path: 'user/:id',
+                component: UserDetail
             }
             ],
         component: Dash,

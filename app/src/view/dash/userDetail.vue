@@ -1,24 +1,27 @@
 <template>
   <DashLayout>
     <div class="content">
-      <div>Avalanchejs</div>
+      User Details
     </div>
   </DashLayout>
 </template>
 <script>
+
 import DashLayout from "@/layouts/dashLayout";
+
 export default {
-  name: 'DashHome',
+  name: 'UserDetails',
   components: {
-    DashLayout,
+    DashLayout
   },
   data() {
-    return {
-      test: []
-    }
+    return {}
   },
   methods: {},
-  beforeMount () {}
+  beforeMount () {},
+  created(){
+    this.$window.scrollTo(0,0);
+  }
 }
 </script>
 

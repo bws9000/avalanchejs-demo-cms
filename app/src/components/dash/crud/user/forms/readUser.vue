@@ -1,33 +1,34 @@
 <template>
   <div class="userForm">
-    <h1>read user</h1>
+    <h1>Users on this node</h1>
+    <ul id="userList">
+      <li v-for="user in this.users" :key="user">
+        <router-link :to="{ path: 'user/'+user }">{{user}}</router-link>
+      </li>
+    </ul>
   </div>
 </template>
 <script>
 export default {
-  name:'createUser',
+  name:'ReadUser',
   data: function() {
     return {
-      username: this.$store.state.loginEmail,
-      password: '',
+      users:[]
     }
   },
   methods:{
-    checkForm: function (e) {
-      e.preventDefault()
-      this.$parent.$parent.$parent.handleCreateUser(this.username,this.password);
-      this.username = '';
-      this.password = '';
+    async listUsers() {
+      let response = await this.$parent.$parent.$parent.handleReadUsers();
+      this.users = response.result.users;
     }
+  },
+  beforeMount() {
+    this.listUsers();
   }
 }
 </script>
 <style scoped>
-.userForm ul li{
+#userList li{
   display:block;
-  padding:3px;
-}
-button{
-  padding:3px;
 }
 </style>
