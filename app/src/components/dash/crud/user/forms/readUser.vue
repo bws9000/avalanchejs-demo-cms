@@ -1,6 +1,9 @@
 <template>
   <div class="userForm">
     <h1>Users on this node</h1>
+    <ul v-if="this.users.length < 1">
+      <li>0</li>
+    </ul>
     <ul id="userList">
       <li v-for="user in this.users" :key="user">
         <router-link :to="{ path: 'user/'+user }">{{user}}</router-link>

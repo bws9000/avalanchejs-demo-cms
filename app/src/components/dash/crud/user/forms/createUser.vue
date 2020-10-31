@@ -1,10 +1,11 @@
 <template>
   <div class="userForm">
+    <h1>Create user on this node</h1>
     <form @submit="checkForm">
       <ul>
         <li>
-          <input type="text" v-model="username" required="required"
-                 placeholder="username" />
+          <input id="inputUser" type="text" v-model="username" required="required"
+                 placeholder="username" @keydown.space.prevent />
         </li>
         <li>
           <input type="text" v-model="password" required="required"
@@ -22,7 +23,7 @@ export default {
   name:'createUser',
   data: function() {
     return {
-      username: this.$store.state.loginEmail,
+      username: '',
       password: '',
     }
   },
@@ -33,7 +34,8 @@ export default {
       this.username = '';
       this.password = '';
     }
-  }
+  },
+  computed() {}
 }
 </script>
 <style scoped>

@@ -4,12 +4,12 @@
     <ul>
       <li><button @click="loadCreate">Create</button></li>
       <li><button @click="loadRead">Read</button></li>
-      <li><button @click="loadUpdate">Update</button></li>
+      <!-- <li><button @click="loadUpdate">Update</button></li> -->
       <li><button @click="loadDelete">Delete</button></li>
     </ul>
     <div v-if="createClicked"><CreateUser/></div>
     <div v-if="readClicked"><ReadUser/></div>
-    <div v-if="updateClicked"><UpdateUser/></div>
+    <!-- <div v-if="updateClicked"><UpdateUser/></div> -->
     <div v-if="deleteClicked"><DeleteUser/></div>
   </div>
 </template>
@@ -20,11 +20,11 @@
 import CreateUser from '@/components/dash/crud/user/forms/createUser'
 import DeleteUser from '@/components/dash/crud/user/forms/deleteUser'
 import ReadUser from '@/components/dash/crud/user/forms/readUser'
-import UpdateUser from '@/components/dash/crud/user/forms/updateUser'
+// import UpdateUser from '@/components/dash/crud/user/forms/updateUser'
 
 export default {
   components:{
-    UpdateUser,
+    // UpdateUser,
     DeleteUser,
     CreateUser,
     ReadUser,

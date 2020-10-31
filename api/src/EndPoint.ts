@@ -27,6 +27,18 @@ class endPoint{
     }
 
     // ext/bc/X
+    avmGetBalance(params:object){
+        let id = 3;
+        let ep = '/ext/bc/X'
+        let m = 'avm.getBalance';
+        return this.api.getData(ep,m,params,id)
+            .then((r)=>{
+                return r;
+            }).catch((err:any)=>{
+                console.log(err)
+                return err
+            })
+    }
     avmCreateAddress(params:object){
         let id = 1;
         let ep = '/ext/bc/X';
@@ -41,6 +53,19 @@ class endPoint{
     }
 
     // ext/keystore
+    keystoreDeleteUser(params:object){
+        console.log(JSON.stringify(params));
+        let id = 1;
+        let m = 'keystore.deleteUser';
+        let ep = '/ext/keystore';
+        return this.api.getData(ep,m,params,id)
+            .then((r)=>{
+                return r;
+            }).catch((err:any)=>{
+                return err;
+            })
+    }
+
     keystoreCreateUser(params:object) {
         let id = 1;
         let m = 'keystore.createUser';

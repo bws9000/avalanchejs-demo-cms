@@ -1,5 +1,6 @@
 <template>
   <div class="userForm">
+    <h1>Update user on this node</h1>
     <form @submit="checkForm">
       <ul>
         <li>
@@ -22,7 +23,7 @@ export default {
   name:'createUser',
   data: function() {
     return {
-      username: this.$store.state.loginEmail,
+      username:'',
       password: '',
     }
   },

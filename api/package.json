@@ -4,6 +4,7 @@
   "description": "node ts",
   "main": "dist/server.js",
   "scripts": {
+    "https": "tsc && node dist/https_server.js",
     "start": "tsc && node dist/server.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },

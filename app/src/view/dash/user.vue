@@ -11,7 +11,8 @@ import CrudUser from "@/components/dash/crud/user/index"
 import DashLayout from "@/layouts/dashLayout";
 import {
       getCreateUser,
-      getListUsers
+      getListUsers,
+      getUserDelete
 } from "../../service/api";
 
 export default {
@@ -27,14 +28,19 @@ export default {
     handleCreateUser(username,password){
       this.createUser(username,password);
     },
-    handleUpdateUser(){
-
-    },
+    handleUpdateUser(){},
     handleReadUsers(){
       return this.listUsers();
     },
-    handleDeleteUser(){
-
+    handleDeleteUser(username,password){
+      getUserDelete( {
+        'username':username,
+        'password': password
+      }).then((res)=>{
+          alert(JSON.stringify(res))
+      }).catch((err)=>{
+        alert(JSON.stringify(err))
+      })
     },
     listUsers(){
       return getListUsers();

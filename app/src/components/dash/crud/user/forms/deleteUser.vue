@@ -1,5 +1,6 @@
 <template>
   <div class="userForm">
+    <h1>Delete user on this node</h1>
     <form @submit="checkForm">
       <ul>
         <li>
@@ -19,17 +20,17 @@
 </template>
 <script>
 export default {
-  name:'createUser',
+  name:'deleteUser',
   data: function() {
     return {
-      username: this.$store.state.loginEmail,
+      username:'',
       password: '',
     }
   },
   methods:{
     checkForm: function (e) {
       e.preventDefault()
-      this.$parent.$parent.$parent.handleCreateUser(this.username,this.password);
+      this.$parent.$parent.$parent.handleDeleteUser(this.username,this.password);
       this.username = '';
       this.password = '';
     }

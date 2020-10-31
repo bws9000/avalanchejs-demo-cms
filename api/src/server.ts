@@ -2,13 +2,36 @@ import express from "express";
 import {EndPoint} from './EndPoint';
 import {User} from "./User";
 
+const secureDevServer = true;
 const app = express();
 const port = 3000;
+
 const user = new Map();
 const blockchainIp = process.env.DEV_AVALANCHE_IP;
 const api = EndPoint.create({avalancheNodeUrl:blockchainIp,jsonRPCVersion:"2.0"});
+
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
+
+app.post('/api/user/wallet/balance',
+    (req, res) => {
+        let params = req.body.params;
+        api.avmGetBalance(params).then((r)=>{
+            res.json(r.data);
+        }).catch((err)=>{
+            console.log(err);
+        })
+    })
+
+app.post('/api/user/delete',
+    (req, res) => {
+        let params = req.body.params;
+        api.keystoreDeleteUser(params).then((r)=>{
+            res.json(r.data);
+        }).catch((err)=>{
+            console.log(err);
+        })
+    })
 
 app.post('/api/user/list',
     (req, res) => {
@@ -55,6 +78,7 @@ app.post('/api/user/create',
             }).catch((e)=>{console.log(e)})
 })
 
+
 const testCreateUser = () => {
     api.infoIsBootStrapped()
         .then((bootStrapped: boolean)=>{
@@ -69,6 +93,18 @@ const testCreateUser = () => {
         }).catch((e)=>{console.log(e)})
 }
 
-app.listen(port, () => {
-    console.log(`listening on port ${port}`);
-});
+if(secureDevServer) {
+    const https = require("https"), fs = require("fs");
+    const options = {
+        key: fs.readFileSync(process.env.DEV_KEY),
+        cert: fs.readFileSync(process.env.DEV_CERT)
+    };
+    app.listen(443, () => {
+        console.log(`listening on secure port ${port}`);
+    });
+    https.createServer(options, app).listen(port);
+}else{
+    app.listen(port, () => {
+        console.log(`listening on port ${port}`);
+    });
+}
