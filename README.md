@@ -21,6 +21,16 @@ Install your node via docker [install instructions here.](https://github.com/ava
 ````
 
 ### Start API service
+first create an env.bat file that looks like this:
+> DEV_KEY and DEV_CERT only if you want to run secure locally
+  for testing
+````
+set DEV_BLOCKCHAIN_ID=<your node id>
+set DEV_AVALANCHE_IP=192.168.99.100
+set DEV_KEY=C:\\<path to key>\\key.pem
+set DEV_CERT=C:\\<path to cert>\\cert.pem
+````
+
 ````
 * cd avalanchejs-demo-cms/api
 * npm run install
