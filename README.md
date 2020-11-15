@@ -7,10 +7,10 @@ Install your node via docker [install instructions here.](https://github.com/ava
 * Install docker
 * Get latest golang image, then run...
 * > docker run -ti -p 9650:9650 -p 9651:9651 golang:latest
-  > go get -v -d github.com/ava-labs/avalanchego
-  > cd src/github.com/ava-labs/avalanchego
-  > ./scripts/build.sh
-  > ./build/avalanchego --http-host=0.0.0.0 --network-id=fuji
+* > go get -v -d github.com/ava-labs/avalanchego
+*  > cd src/github.com/ava-labs/avalanchego
+*  > ./scripts/build.sh
+*  > ./build/avalanchego --http-host=0.0.0.0 --network-id=fuji
 * Now you've got a node running locally at 192.168.99.100
 * Wait until the node bootstraps completely.Take note of this line...
 * > Set node's ID to L7e2Y32KzbM5LvP6FuDnCaV6GjeBxiSr7
