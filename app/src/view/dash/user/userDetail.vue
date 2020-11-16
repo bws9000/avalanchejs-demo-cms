@@ -1,8 +1,10 @@
 <template>
   <DashLayout>
     <div class="content">
-      <h1>{{ this.displayHeader }}</h1>
-      <GetWalletForm/>
+      <h1>{{ this.$route.params.id }}{{this.displayHeader}}</h1>
+      <span style="font-color:#CCC;font-size:12px;">
+        default address: <strong>{{this.address}}</strong></span>
+        <GetWalletForm/>
     </div>
   </DashLayout>
 </template>
@@ -10,7 +12,7 @@
 
 import GetWalletForm from '@/components/dash/forms/getWalletForm'
 import DashLayout from "@/layouts/dashLayout";
-import {getListUsers} from "@/service/api";
+import {getListUsers,getUserAddress} from "@/service/api";
 
 export default {
   name: 'UserDetails',
@@ -21,14 +23,19 @@ export default {
   data() {
     return {
       userValid:true,
-      displayHeader:'User Details',
-      username:'',
+      displayHeader:' details',
+      address:'',
       users:[]
     }
   },
   methods: {
     listUsers(){
       return getListUsers();
+    },
+    getAddress(){
+      return getUserAddress({
+        username:this.$route.params.id
+      });
     }
   },
   beforeMount () {},
@@ -38,6 +45,10 @@ export default {
       if(!this.users.includes(this.$route.params.id)){
         this.userValid = false;
         this.displayHeader = 'User Not Found.'
+      }else{
+        this.getAddress().then((r)=>{
+          this.address = r.address;
+        });
       }
     })
   }

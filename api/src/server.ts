@@ -2,7 +2,7 @@ import express from "express";
 import {EndPoint} from './EndPoint';
 import {User} from "./User";
 
-const secureDevServer = true;
+const secureDevServer = false;
 const app = express();
 const port = 3000;
 
@@ -77,6 +77,13 @@ app.post('/api/user/create',
                 }
             }).catch((e)=>{console.log(e)})
 })
+
+//get default address created when user was created
+app.post('/api/user/get/address',
+    (req, res) => {
+        let params = req.body.params;
+        res.json({address:user.get(params.username).getAddress()});
+    });
 
 
 const testCreateUser = () => {

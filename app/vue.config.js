@@ -1,9 +1,9 @@
 module.exports = {
   "devServer": {
-    https:true,
+    https:false,
     "proxy": {
       "^/api": {
-        "target": "https://localhost:3000",
+        "target": "http://localhost:3000",
         "secure": false
       }
     }

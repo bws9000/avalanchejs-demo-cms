@@ -2,7 +2,7 @@
 ### With Magic User Authentication [Magic.link](https://magic.link)
 Install your node via docker [install instructions here.](https://github.com/ava-labs/avalanchego)
 
-# First Step ( get your node running)
+# First Step ( get your node running )
 ### If you're on a Windows Machine
 * Install docker
 * Get latest golang image, then run...
@@ -20,7 +20,7 @@ Install your node via docker [install instructions here.](https://github.com/ava
 * That is your nodes ID
 ````
 
-### Start API service
+### Start API Service
 first create an env.bat file that looks like this:
 > DEV_KEY and DEV_CERT only if you want to run secure locally
   for testing

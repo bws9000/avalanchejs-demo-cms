@@ -1,3 +1,18 @@
+export async function getUserAddress(params) {
+
+    const options = {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+            params:params
+        })
+    };
+    const res = await fetch('/api/user/get/address', options);
+    return await res.json();
+}
+
 export async function getWalletBalance(params) {
 
     const options = {
