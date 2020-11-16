@@ -2,7 +2,7 @@
   <DashLayout>
     <div class="content">
       <h1>{{ this.$route.params.id }}{{this.displayHeader}}</h1>
-      <span style="font-color:#CCC;font-size:12px;">
+      <span class="address">
         default address: <strong>{{this.address}}</strong></span>
         <GetWalletForm/>
     </div>
@@ -55,6 +55,8 @@ export default {
 }
 </script>
 
-<style>
-/* */
+<style scoped>
+.address {
+  font-size: 12px;
+}
 </style>

@@ -82,7 +82,14 @@ app.post('/api/user/create',
 app.post('/api/user/get/address',
     (req, res) => {
         let params = req.body.params;
-        res.json({address:user.get(params.username).getAddress()});
+        if(user.get(params.username) !== undefined) {
+            res.json({address:user.get(params.username).getAddress()});
+        }else{
+            //no DB yet
+            //if you created a user and restarted
+            //user Map reinitialized
+            res.json({address:'undefined'})
+        }
     });
 
 
